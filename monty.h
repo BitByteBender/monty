@@ -5,6 +5,8 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdbool.h>
+
+#define DELIMITER " \n\t"
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -35,6 +37,5 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-ssize_t *readLineFromFile(char **, unsigned int *, FILE *);
-void procFile(File *, char *, unsigned int);
+extern instruction_t operations[];
 #endif /* monty.h */
