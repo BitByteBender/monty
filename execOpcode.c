@@ -19,8 +19,8 @@ void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file)
             i++;
         }
     } else {
-        errHandler("Opcode is NULL", lnCount, stack, file);
+        errHandler("Err: NULL opcode", lnCount, stack, file);
     }
 
-    errHandler("Unknown opcode", lnCount, stack, file);
+    errHandler("opcode not found", lnCount, stack, file);
 }
