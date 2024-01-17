@@ -11,7 +11,7 @@ ssize_t *readLineFromFile(char **buffer, unsigned int *lnCount, FILE *file)
 	size_t *size;
 	ssize_t readdt = NULL;
 
-	readdt = getline(buffer, size, file)
+	readdt = (ssize_t)getline(buffer, size, file)
 
 	if (readdt > 0)
 	{
@@ -20,9 +20,11 @@ ssize_t *readLineFromFile(char **buffer, unsigned int *lnCount, FILE *file)
 	}
 	else if (readdt == -1)
 	{
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, '\n', 1);
+		if (*buffer)
+		{
 		free(*buffer);
+		*buffer = NULL;
+		}
 		onExit(NULL, EXIT_FAILURE);
 	}
 	return (0);
