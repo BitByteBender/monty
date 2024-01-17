@@ -4,13 +4,15 @@
  * @stack: pointer to stack top
  * @file: pointer to processed file
  */
-void clean(stack_t **stack, FILE *file)
-{
-	if (Cnt.extractedArgs)
-		free(Cnt.extractedArgs);
+void clean(stack_t **stack, FILE *file) {
+    (void) file;
+    if (Cnt.extractedArgs) {
+        free(Cnt.extractedArgs);
+    }
 
-	if (Cnt.file)
-		fclose(Cnt.file);
+    if (Cnt.file) {
+        fclose(Cnt.file);
+    }
 
-	freeStack(stack);
+    freeStack(stack);
 }

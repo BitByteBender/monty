@@ -6,11 +6,10 @@
  * @stack: pointer to stack top
  * @file: pointer to processed file
  */
-void errHandler(const char *msg, short lnNumber, stack_t **stack, FILE *file)
-{
-	const char *errMsg = "L%d: %s\n";
 
-	fprintf(stderr, errMsg, (unsigned int)lnNumber, msg);
-	clean(stack, file);
-	exit(EXIT_FAILURE);
+void errHandler(const char *msg, short lnNumber, stack_t **stack, FILE *file) {
+    const char *errMsg = "L%d: %s\n";
+    fprintf(stderr, errMsg, lnNumber, msg);
+    clean(stack, file);
+    exit(EXIT_FAILURE);
 }

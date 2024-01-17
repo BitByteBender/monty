@@ -1,10 +1,12 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <stdio.h>
-#include <string.h>
 #include <stddef.h>
 #include <stdlib.h>
+#include <string.h>
 #include <stdbool.h>
+#include <unistd.h>
 
 #define DELIMITER " \n\t"
 /**
@@ -38,6 +40,7 @@ typedef struct instruction_s
 } instruction_t;
 
 extern instruction_t operations[];
+
 /**
  * struct Container - container for parsing informations
  * @file: file processed
@@ -45,29 +48,43 @@ extern instruction_t operations[];
  * @extractedArgs: arguments extracted from the data
  * @switcher: list indicator
  */
-typedef struct Container
+typedef struct
 {
 	FILE *file;
 	char *data;
 	char *extractedArgs;
 	bool switcher;
 	
-} dtContainer;
+	} dtContainer;
 extern dtContainer Cnt;
 
-ssize_t readCmd(char **, size_t *, unsigned int *, FILE *);
-void errHandler(const char *, short, stack_t **, FILE *);
-void clean(stack_t **, FILE *);
-void execOpcode(char *, stack_t **, short, FILE *);
-void freeStack(stack_t **);
-void insertQueue(stack_t **, int, const char *);
-void onExit(stack_t **, int);
-void printAll(stack_t **, unsigned int);
-void pushToStack(stack_t **, unsigned int);
-void checkPushArgs(const char *, unsigned int, stack_t **);
-void execCmd(char *, stack_t **, unsigned int, FILE *);
+
+ssize_t readLineFromFile(char **buffer, size_t *size, unsigned int *lnCount, FILE *file);
+
+void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file);
+void execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount);
+
+
+void procFile(FILE *file, char *data, unsigned int line_number);
+
+void errHandler(const char *msg, short lnNumber, stack_t **stack, FILE *file);
+
+void clean(stack_t **stack, FILE *file);
+
+
+void onExit(stack_t **stack, int log);
+void freeStack(stack_t **stack);
+
 void insertNode(stack_t **, int);
-void fileOpener(FILE **, char *);
-void procFile(FILE *, char *, unsigned int);
-void trigger(int, char **, dtContainer *);
-#endif /* monty.h */
+
+void insertQueue(stack_t **stack, int n, const char *errMsg);
+
+void checkPushArgs(const char *args, unsigned int lnCount, stack_t **stack);
+
+void pushToStack(stack_t **stack, unsigned int lnCount);
+
+void printAll(stack_t **stack, unsigned int lnCount);
+void fileOpener(FILE **file, char *fname);
+void trigger(int argCount, char **argValue, dtContainer *Cnt);
+void onExit(stack_t **stack, int log);
+#endif /* main.h */

@@ -7,20 +7,23 @@
  */
 void procFile(FILE *file, char *data, unsigned int line_number)
 {
-	stack_t *stack = NULL;
-	size_t size = 0;
-	ssize_t readData = 1;
+    size_t size = 0;
+    stack_t *stack = NULL;
+    ssize_t readdt = 1;
 
-	while (readData > 0)
-	{
-	data = NULL;
-	readData = readCmd(&data, &size, &line_number, file);
-	line_number++;
+    while (readdt > 0)
+    {
+        data = NULL;
+        readdt = readLineFromFile(&data, &size, &line_number, file);
+        line_number++;
 
-	if (readData > 0)
-		execCmd(data, &stack, line_number, file);
-	}
+        if (readdt > 0) {
+            execCmd(data, &stack, file, line_number);
+        }
 
-	free(data);
-	freeStack(&stack);
+    }
+
+     free(data);
+
+    freeStack(&stack);
 }

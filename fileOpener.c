@@ -6,11 +6,9 @@
  */
 void fileOpener(FILE **file, char *fname)
 {
-	*file = fopen(fname, "r");
-
-	if (!(*file))
-	{
-	fprintf(stderr, "Err: couldn't open file %s\n", fname);
-	exit(EXIT_FAILURE);
-	}
+    *file = fopen(fname, "r");
+    if (!*file) {
+        fprintf(stderr, "Err: failed to open file %s\n", fname);
+        exit(EXIT_FAILURE);
+    }
 }

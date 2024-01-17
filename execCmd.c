@@ -1,36 +1,35 @@
-#include "monty.c"
+#include "monty.h"
 /**
  * execCmd - executes command based on given data
  * @data: string that holds a cmd and args
  * @stack: pointer to the stack top
- * @lineCount: line_number in the file
+ * @lnCount: line_number in the file
  * @file: pointer to the processed file
  */
-void execCmd(char *data, stack_t **stack, unsigned int lineCount, FILE *file)
+void execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount)
 {
-	char *opcode, *argsHolder;
+    char *opcode = strtok(data, DELIMITER);
+    char *extractedArgs = strtok(NULL, DELIMITER);
 
-	opcode = strtok(data, DELIMITER);
-	argsHolder = strtok(NULL, DELIMITER);
+    if (extractedArgs) {
+      Cnt.extractedArgs = strdup(extractedArgs);
+        Cnt.extractedArgs = strdup(extractedArgs);
+        if (Cnt.extractedArgs == NULL) {
+            fprintf(stderr, "Err: strdup failed\n");
+            clean(stack, file);
+            exit(EXIT_FAILURE);
+        }
+    }
 
-	if (argsHolder)
-	{
-	Cnt.extractedArgs = strdup(argsHolder);
-	if (Cnt.extractedArgs == NULL)
-	{
-		fprintf(stderr, "Err: strdup failure\n");
-		clean(stack, file);
-		exit(EXIT_FAILURE);
-	}
-	}
-	execOpcode(opcode, stack, lineCount, file);
 
-	if (data)
-		free(data);
+    execOpcode(opcode, stack, lnCount, file);
 
-	if (Cnt.extractedArgs)
-	{
-	free(Cnt.extractedArgs);
-	Cnt.extractedArgs = NULL;
-	}
+    if (data) {
+        free(data);
+    }
+
+    if (Cnt.extractedArgs) {
+        free(Cnt.extractedArgs);
+        Cnt.extractedArgs = NULL;
+    }
 }
