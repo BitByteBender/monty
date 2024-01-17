@@ -1,17 +1,15 @@
 #include "monty.h"
 /**
- * readLineFromFile - reads a line from file
+ * readCmd - reads a line from file
  * @buffer: pointer to the buffer storing line
  * @lnCount: pointer
  * @file: file to read from
+ * @size: pointer to size of buffer
  * Return: number of chars read as ssize_t
  */
-ssize_t *readLineFromFile(char **buffer, unsigned int *lnCount, FILE *file)
+ssize_t readCmd(char **buffer, size_t *size, unsigned int *lnCount, FILE *file)
 {
-	size_t *size;
-	ssize_t readdt = NULL;
-
-	readdt = (ssize_t)getline(buffer, size, file)
+	ssize_t readdt = (ssize_t)getline(buffer, size, file)
 
 	if (readdt > 0)
 	{
