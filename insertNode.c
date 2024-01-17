@@ -1,8 +1,8 @@
 #include "monty.h"
 /**
- * insertNode -
- * @stack: 
- * @n: 
+ * insertNode - creates a new node
+ * @stack: pointer to stack struct
+ * @n: number to be stored in new node
  */
 void insertNode(stack_t **stack, int n)
 {

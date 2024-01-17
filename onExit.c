@@ -4,10 +4,13 @@
  * @stack: pointer to stack
  * @log: exit log value
  */
-void onExit(stack_t **stack, int log) {
-    freeStack(stack);
-    if (Cnt.extractedArgs) {
-        free(Cnt.extractedArgs);
-    }
-    exit(log);
+void onExit(stack_t **stack, int log)
+{
+	freeStack(stack);
+
+	if (Cnt.extractedArgs)
+	{
+		free(Cnt.extractedArgs);
+	}
+	exit(log);
 }
