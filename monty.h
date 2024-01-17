@@ -38,4 +38,36 @@ typedef struct instruction_s
 } instruction_t;
 
 extern instruction_t operations[];
+/**
+ * struct Container - container for parsing informations
+ * @file: file processed
+ * @data: data to read from the file
+ * @extractedArgs: arguments extracted from the data
+ * @switcher: list indicator
+ */
+typedef struct Container
+{
+	FILE *file;
+	char *data;
+	char *extractedArgs;
+	bool switcher;
+	
+} dtContainer;
+extern dtContainer Cnt;
+
+ssize_t readCmd(char **, size_t *, unsigned int *, FILE *);
+void errHandler(const char *, short, stack_t **, FILE *);
+void clean(stack_t **, FILE *);
+void execOpcode(char *, stack_t **, short, FILE *);
+void freeStack(stack_t **);
+void insertQueue(stack_t **, int, const char *);
+void onExit(stack_t **, int);
+void printAll(stack_t **, unsigned int);
+void pushToStack(stack_t **, unsigned int);
+void checkPushArgs(const char *, unsigned int, stack_t **);
+void execCmd(char *, stack_t **, unsigned int, FILE *);
+void insertNode(stack_t **, int);
+void fileOpener(FILE **, char *);
+void procFile(FILE *, char *, unsigned int);
+void trigger(int, char **, dtContainer *);
 #endif /* monty.h */

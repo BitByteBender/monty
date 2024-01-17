@@ -6,13 +6,11 @@
  */
 void clean(stack_t **stack, FILE *file)
 {
-	void(file);
-
-	if (Cnt.extractedARgs)
+	if (Cnt.extractedArgs)
 		free(Cnt.extractedArgs);
 
 	if (Cnt.file)
 		fclose(Cnt.file);
 
-	freeStack(*stack);
+	freeStack(stack);
 }

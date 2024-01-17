@@ -5,7 +5,7 @@
  * @data: pointer to the buffer storing the line
  * @line_number: pointer to the line_number
  */
-void procFile(File *file, char *data, unsigned int line_number)
+void procFile(FILE *file, char *data, unsigned int line_number)
 {
 	stack_t *stack = NULL;
 	size_t size = 0;

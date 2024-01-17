@@ -1,5 +1,4 @@
 #include "monty.c"
-#include "core.c"
 /**
  * execCmd - executes command based on given data
  * @data: string that holds a cmd and args
@@ -7,19 +6,19 @@
  * @lineCount: line_number in the file
  * @file: pointer to the processed file
  */
-void execCmd(char *data, stack_t **stack, unsined int lineCount, FILE *file)
+void execCmd(char *data, stack_t **stack, unsigned int lineCount, FILE *file)
 {
 	char *opcode, *argsHolder;
 
-	opcode = _strtok(data, DELIMITER);
-	argsHolder = _strtok(NULL, DELIMITER);
+	opcode = strtok(data, DELIMITER);
+	argsHolder = strtok(NULL, DELIMITER);
 
 	if (argsHolder)
 	{
-	Cnt.extractedArgs = _strdup(argsHolder);
+	Cnt.extractedArgs = strdup(argsHolder);
 	if (Cnt.extractedArgs == NULL)
 	{
-		printf(stderr, "Err: strdup failure\n");
+		fprintf(stderr, "Err: strdup failure\n");
 		clean(stack, file);
 		exit(EXIT_FAILURE);
 	}

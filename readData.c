@@ -9,7 +9,7 @@
  */
 ssize_t readCmd(char **buffer, size_t *size, unsigned int *lnCount, FILE *file)
 {
-	ssize_t readdt = (ssize_t)getline(buffer, size, file)
+	ssize_t readdt = (ssize_t)getline(buffer, size, file);
 
 	if (readdt > 0)
 	{

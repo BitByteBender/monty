@@ -12,6 +12,7 @@ void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file)
 
 	instruction_t operations[] = {
 		{"push", pushToStack},
+		{"pall", printAll},
 		{NULL, NULL}
 	};
 
@@ -19,7 +20,7 @@ void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file)
 	{
 		while (operations[i].opcode)
 		{
-			if (_strCmp(opcode, operations[i].opcode) == false)
+			if (strcmp(opcode, operations[i].opcode) == false)
 			{
 			operations[i].f(stack, lnCount);
 			return;
@@ -30,5 +31,5 @@ void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file)
 	else
 		errHandler("Err: NULL opcode", lnCount, stack, file);
 
-	errHandler("opcode not found", lncount, stack, file);
+	errHandler("opcode not found", lnCount, stack, file);
 }
