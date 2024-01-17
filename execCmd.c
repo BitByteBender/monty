@@ -8,28 +8,29 @@
  */
 void execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount)
 {
-    char *opcode = strtok(data, DELIMITER);
-    char *extractedArgs = strtok(NULL, DELIMITER);
+	char *opcode = strtok(data, DELIMITER);
+	char *extractedArgs = strtok(NULL, DELIMITER);
 
-    if (extractedArgs) {
-      Cnt.extractedArgs = strdup(extractedArgs);
-        Cnt.extractedArgs = strdup(extractedArgs);
-        if (Cnt.extractedArgs == NULL) {
-            fprintf(stderr, "Err: strdup failed\n");
-            clean(stack, file);
-            exit(EXIT_FAILURE);
-        }
-    }
+	if (extractedArgs)
+	{
+	Cnt.extractedArgs = strdup(extractedArgs);
+	Cnt.extractedArgs = strdup(extractedArgs);
+		if (Cnt.extractedArgs == NULL)
+		{
+		fprintf(stderr, "Err: strdup failed\n");
+		clean(stack, file);
+		exit(EXIT_FAILURE);
+		}
+	}
 
+	execOpcode(opcode, stack, lnCount, file);
 
-    execOpcode(opcode, stack, lnCount, file);
+	if (data)
+		free(data);
 
-    if (data) {
-        free(data);
-    }
-
-    if (Cnt.extractedArgs) {
-        free(Cnt.extractedArgs);
-        Cnt.extractedArgs = NULL;
-    }
+	if (Cnt.extractedArgs)
+	{
+	free(Cnt.extractedArgs);
+	Cnt.extractedArgs = NULL;
+	}
 }
