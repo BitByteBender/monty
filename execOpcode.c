@@ -1,10 +1,4 @@
 #include "monty.h"
-
-static instruction_t operations[] = {
-	{"push", pushToStack},
-	{NULL, NULL}
-};
-
 /**
  * execOpcode - executes the operation base on the opcode
  * @opcode: the operation code to be exec
@@ -16,11 +10,16 @@ void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file)
 {
 	unsigned int i = 0;
 
-	if (opcode && operations[i].opcode != NULL)
+	instruction_t operations[] = {
+		{"push", pushToStack},
+		{NULL, NULL}
+	};
+
+	if (opcode)
 	{
-		while (operations[i].opcode && opcode)
+		while (operations[i].opcode)
 		{
-			if (_strCmp(opcode, operations[i].opcode))
+			if (_strCmp(opcode, operations[i].opcode) == false)
 			{
 			operations[i].f(stack, lnCount);
 			return;
@@ -29,5 +28,7 @@ void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file)
 		}
 	}
 	else
-		errHandler("", lnCount, stack, file);
+		errHandler("Err: NULL opcode", lnCount, stack, file);
+
+	errHandler("opcode not found", lncount, stack, file);
 }
