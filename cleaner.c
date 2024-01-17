@@ -6,7 +6,13 @@
  */
 void clean(stack_t **stack, FILE *file)
 {
-	fclose(file);
-	free(stContainer.data);
+	void(file);
+
+	if (Cnt.extractedARgs)
+		free(Cnt.extractedArgs);
+
+	if (Cnt.file)
+		fclose(Cnt.file);
+
 	freeStack(*stack);
 }
