@@ -16,5 +16,5 @@ void _pushToSorQ(stack_t **stack, unsigned int lnCount)
 	if (Cnt.switcher == 0)
 		insertNode(stack, n);
 	else
-		insertQueue(stack, n, "Err: failed allocation\n");
+		insertQueue(stack, n, "Error: malloc failed\n");
 }

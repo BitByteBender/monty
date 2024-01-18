@@ -11,7 +11,7 @@ void trigger(int argCount, char **argValue, dtContainer *Cnt)
 
 	if (argCount != 2)
 	{
-	fprintf(stderr, "Usage: %s\n", argValue[0]);
+	fprintf(stderr, "USAGE: monty file\n");
 	exit(EXIT_FAILURE);
 	}
 

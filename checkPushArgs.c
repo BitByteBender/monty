@@ -11,7 +11,7 @@ void checkPushArgs(const char *args, unsigned int lnCount, stack_t **stack)
 
 	if (args == NULL || args[0] == '\0')
 	{
-	fprintf(stderr, "L%d: usage-err: push integer\n", lnCount);
+	fprintf(stderr, "L%d: usage: push integer\n", lnCount);
 	clean(stack, Cnt.file);
 	exit(EXIT_FAILURE);
 	}
@@ -22,7 +22,7 @@ void checkPushArgs(const char *args, unsigned int lnCount, stack_t **stack)
 	{
 	if (args[j] < '0' || args[j] > '9')
 	{
-		fprintf(stderr, "L%d: usage-err: push integer\n", lnCount);
+		fprintf(stderr, "L%d: usage: push integer\n", lnCount);
 		clean(stack, Cnt.file);
 		exit(EXIT_FAILURE);
 	}
