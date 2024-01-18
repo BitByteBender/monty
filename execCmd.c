@@ -5,6 +5,7 @@
  * @stack: pointer to the stack top
  * @lnCount: line_number in the file
  * @file: pointer to the processed file
+ * Return: exe status
  */
 int execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount)
 {
@@ -35,9 +36,6 @@ int execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount)
 
 	if (exec == 1)
 		handleUnk(lnCount, opcode, file, data, stack);
-
-	if (data)
-		free(data);
 
 	if (Cnt.extractedArgs)
 	{

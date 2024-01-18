@@ -5,7 +5,7 @@
  * @stk: pointer to the stack
  * @lC: Line_number
  * @fl: pointer to the processed file
- * @op: 
+ * @op: array of operations
  */
 void execOp(char *ocd, stack_t **stk, short lC, FILE *fl, instruction_t *op)
 {

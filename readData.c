@@ -5,8 +5,8 @@
  * @lC: pointer
  * @fl: file to read from
  * @sz: pointer to size of buffer
- * @dt:
- * Return: number of chars read as ssize_t
+ * @dt: data pointer
+ * Return: size of read data
  */
 ssize_t readCmd(char **bfr, size_t *sz, unsigned int *lC, FILE *fl, char **dt)
 {

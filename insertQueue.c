@@ -28,17 +28,14 @@ void insertQueue(stack_t **stack, int n, const char *errMsg)
 
 		while (prevNd->next != NULL)
 			prevNd = prevNd->next;
-
 		prevNd->next = newNd;
 		newNd->prev = prevNd;
 	}
-
 	if (Cnt.extractedArgs)
 	{
 	free(Cnt.extractedArgs);
 	Cnt.extractedArgs = NULL;
 	}
-
 	}
 	else
 	{
