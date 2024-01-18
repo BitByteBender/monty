@@ -25,5 +25,5 @@ void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file)
 	else
 		errHandler("Err: NULL opcode", lnCount, stack, file);
 
-	errHandler("opcode not found", lnCount, stack, file);
+	errHandler("unknown instruction", lnCount, stack, file);
 }

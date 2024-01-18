@@ -10,7 +10,7 @@ void fileOpener(FILE **file, char *fname)
 
 	if (!*file)
 	{
-	fprintf(stderr, "Err: failed to open file %s\n", fname);
+	fprintf(stderr, "Error: Can't open file %s\n", fname);
 	exit(EXIT_FAILURE);
 	}
 }

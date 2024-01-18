@@ -13,8 +13,8 @@ void execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount)
 
 	if (extractedArgs)
 	{
-	Cnt.extractedArgs = strdup(extractedArgs);
-	Cnt.extractedArgs = strdup(extractedArgs);
+	Cnt.extractedArgs = _strDuplicate(extractedArgs);
+	Cnt.extractedArgs = _strDuplicate(extractedArgs);
 		if (Cnt.extractedArgs == NULL)
 		{
 		fprintf(stderr, "Err: strdup failed\n");

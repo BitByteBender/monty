@@ -10,7 +10,7 @@ void insertNode(stack_t **stack, int n)
 
 	if (newNd == NULL)
 	{
-	fprintf(stderr, "Err: failed to allocate memory\n");
+	fprintf(stderr, "Error: malloc failed\n");
 	clean(stack, Cnt.file);
 	exit(EXIT_FAILURE);
 	}

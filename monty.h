@@ -74,4 +74,5 @@ void printAll(stack_t **, unsigned int);
 void fileOpener(FILE **, char *);
 void trigger(int, char **, dtContainer *);
 void onExit(stack_t **, int);
+char *_strDuplicate(char *);
 #endif /* main.h */
