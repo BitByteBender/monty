@@ -12,5 +12,7 @@ void onExit(stack_t **stack, int log)
 	{
 		free(Cnt.extractedArgs);
 	}
+
+	clean(stack, Cnt.file);
 	exit(log);
 }
