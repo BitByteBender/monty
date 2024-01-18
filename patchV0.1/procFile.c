@@ -14,15 +14,13 @@ void procFile(FILE *file, char *data, unsigned int line_number)
 	while (readdt > 0)
 	{
 	data = NULL;
-	readdt = readCmd(&data, &size, &line_number, file, &data);
+	readdt = readCmd(&data, &size, &line_number, file);
 	line_number++;
 
 	if (readdt > 0)
-	{
 		execCmd(data, &stack, file, line_number);
-		free(data);
-	}
 	}
 
+	free(data);
 	freeStack(&stack);
 }

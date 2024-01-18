@@ -54,27 +54,37 @@ typedef struct
 	char *data;
 	char *extractedArgs;
 	bool switcher;
-} dtContainer;
+	
+	} dtContainer;
 extern dtContainer Cnt;
 
 
-ssize_t readCmd(char **, size_t *, unsigned int *, FILE *, char **);
-void execOp(char *, stack_t **, short, FILE *, instruction_t *);
-int execCmd(char *, stack_t **, FILE *, unsigned int);
-void procFile(FILE *, char *, unsigned int);
-void errHandler(const char *, short, stack_t **, FILE *);
-void clean(stack_t **, FILE *);
-void onExit(stack_t **, int);
-void freeStack(stack_t **);
+ssize_t readLineFromFile(char **buffer, size_t *size, unsigned int *lnCount, FILE *file);
+
+void execOpcode(char *opcode, stack_t **stack, short lnCount, FILE *file);
+void execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount);
+
+
+void procFile(FILE *file, char *data, unsigned int line_number);
+
+void errHandler(const char *msg, short lnNumber, stack_t **stack, FILE *file);
+
+void clean(stack_t **stack, FILE *file);
+
+
+void onExit(stack_t **stack, int log);
+void freeStack(stack_t **stack);
+
 void insertNode(stack_t **, int);
-void insertQueue(stack_t **, int, const char *);
-void checkPushArgs(const char *, unsigned int, stack_t **);
-void _pushToSorQ(stack_t **, unsigned int);
-void printAll(stack_t **, unsigned int);
-void fileOpener(FILE **, char *);
-void trigger(int, char **, dtContainer *);
-void onExit(stack_t **, int);
-char *_strDuplicate(char *);
-void handleUnk(int, char *, FILE *, char *, stack_t **);
-int Exe(char *, stack_t **, unsigned int, FILE *, instruction_t *);
+
+void insertQueue(stack_t **stack, int n, const char *errMsg);
+
+void checkPushArgs(const char *args, unsigned int lnCount, stack_t **stack);
+
+void pushToStack(stack_t **stack, unsigned int lnCount);
+
+void printAll(stack_t **stack, unsigned int lnCount);
+void fileOpener(FILE **file, char *fname);
+void trigger(int argCount, char **argValue, dtContainer *Cnt);
+void onExit(stack_t **stack, int log);
 #endif /* main.h */

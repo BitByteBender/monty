@@ -1,5 +1,11 @@
 #include "monty.h"
 
+instruction_t operations[] = {
+	{"push", _pushToSorQ},
+	{"pall", printAll},
+	{NULL, NULL}
+};
+
 dtContainer Cnt = {NULL, NULL, NULL, false};
 /**
  * main - function main

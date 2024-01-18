@@ -11,14 +11,8 @@ void clean(stack_t **stack, FILE *file)
 	if (Cnt.extractedArgs)
 		free(Cnt.extractedArgs);
 
-	if (Cnt.data)
-		free(Cnt.data);
-
 	if (Cnt.file)
-	{
-	fclose(Cnt.file);
-	Cnt.file = NULL;
-	}
+		fclose(Cnt.file);
 
 	freeStack(stack);
 }

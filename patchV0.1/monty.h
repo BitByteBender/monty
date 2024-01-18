@@ -58,9 +58,9 @@ typedef struct
 extern dtContainer Cnt;
 
 
-ssize_t readCmd(char **, size_t *, unsigned int *, FILE *, char **);
-void execOp(char *, stack_t **, short, FILE *, instruction_t *);
-int execCmd(char *, stack_t **, FILE *, unsigned int);
+ssize_t readCmd(char **, size_t *, unsigned int *, FILE *);
+void execOpcode(char *, stack_t **, short, FILE *);
+void execCmd(char *, stack_t **, FILE *, unsigned int);
 void procFile(FILE *, char *, unsigned int);
 void errHandler(const char *, short, stack_t **, FILE *);
 void clean(stack_t **, FILE *);
@@ -75,6 +75,4 @@ void fileOpener(FILE **, char *);
 void trigger(int, char **, dtContainer *);
 void onExit(stack_t **, int);
 char *_strDuplicate(char *);
-void handleUnk(int, char *, FILE *, char *, stack_t **);
-int Exe(char *, stack_t **, unsigned int, FILE *, instruction_t *);
 #endif /* main.h */

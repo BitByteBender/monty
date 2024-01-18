@@ -1,30 +1,37 @@
 #include "monty.h"
 /**
  * readCmd - reads a line from file
- * @buffer: pointer to the buffer storing line
- * @lnCount: pointer
- * @file: file to read from
- * @size: pointer to size of buffer
+ * @bfr: pointer to the buffer storing line
+ * @lC: pointer
+ * @fl: file to read from
+ * @sz: pointer to size of buffer
+ * @dt:
  * Return: number of chars read as ssize_t
  */
-ssize_t readCmd(char **buffer, size_t *size, unsigned int *lnCount, FILE *file)
+ssize_t readCmd(char **bfr, size_t *sz, unsigned int *lC, FILE *fl, char **dt)
 {
 	ssize_t readdt;
-	*buffer = NULL;
+	*bfr = NULL;
 
-	readdt = getline(buffer, size, file);
+	readdt = getline(bfr, sz, fl);
 
 	if (readdt > 0)
 	{
-	(*lnCount)++;
+	(*lC)++;
 	return (readdt);
 	}
 	else if (readdt == -1)
 	{
-		if (*buffer)
+		if (*bfr)
 		{
-		free(*buffer);
-		*buffer = NULL;
+		free(*bfr);
+		*bfr = NULL;
+		}
+
+		if (*dt)
+		{
+		free(*dt);
+		*dt = NULL;
 		}
 	onExit(NULL, EXIT_FAILURE);
 	}

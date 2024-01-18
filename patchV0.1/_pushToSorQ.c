@@ -17,10 +17,4 @@ void _pushToSorQ(stack_t **stack, unsigned int lnCount)
 		insertNode(stack, n);
 	else
 		insertQueue(stack, n, "Error: malloc failed\n");
-
-	if (Cnt.extractedArgs)
-	{
-	free(Cnt.extractedArgs);
-	Cnt.extractedArgs = NULL;
-	}
 }

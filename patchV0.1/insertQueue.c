@@ -32,21 +32,9 @@ void insertQueue(stack_t **stack, int n, const char *errMsg)
 		prevNd->next = newNd;
 		newNd->prev = prevNd;
 	}
-
-	if (Cnt.extractedArgs)
-	{
-	free(Cnt.extractedArgs);
-	Cnt.extractedArgs = NULL;
-	}
-
 	}
 	else
 	{
-	if (Cnt.extractedArgs)
-	{
-	free(Cnt.extractedArgs);
-	Cnt.extractedArgs = NULL;
-	}
 	write(STDERR_FILENO, errMsg, strlen(errMsg));
 	clean(stack, Cnt.file);
 	exit(EXIT_FAILURE);
