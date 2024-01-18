@@ -1,9 +1,9 @@
 #include "monty.h"
 
 instruction_t operations[] = {
-    {"push", pushToStack},
-    {"pall", printAll},
-    {NULL, NULL}
+	{"push", _pushToSorQ},
+	{"pall", printAll},
+	{NULL, NULL}
 };
 
 dtContainer Cnt = {NULL, NULL, NULL, false};
@@ -13,7 +13,8 @@ dtContainer Cnt = {NULL, NULL, NULL, false};
  * @argv: argument value
  * Return: Always 0 (Success)
  */
-int main(int argc, char **argv) {
-    trigger(argc, argv, &Cnt);
-    return (0);
+int main(int argc, char **argv)
+{
+	trigger(argc, argv, &Cnt);
+	return (0);
 }

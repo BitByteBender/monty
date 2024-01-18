@@ -5,10 +5,11 @@
  */
 void freeStack(stack_t **stack)
 {
-    while (stack && *stack)
-    {
-        stack_t *st = (*stack)->next;
-        free(*stack);
-        *stack = st;
-    }
+	while (stack && *stack)
+	{
+	stack_t *st = (*stack)->next;
+
+	free(*stack);
+	*stack = st;
+	}
 }

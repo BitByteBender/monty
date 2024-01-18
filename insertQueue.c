@@ -1,7 +1,10 @@
 #include "monty.h"
 #include <unistd.h>
 /**
- *
+ * insertQueue - inserts a new node with a given val
+ * @stack: pointer to stack struct
+ * @n: int val to be stored
+ * @errMsg: error msg to be displayed
  */
 void insertQueue(stack_t **stack, int n, const char *errMsg)
 {
