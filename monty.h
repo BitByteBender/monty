@@ -75,4 +75,5 @@ void _exceptionHandler(stack_t **, unsigned int, const char *);
 void _addCmd(stack_t **, unsigned int, stack_t *);
 void _nopCmd(stack_t **, unsigned int);
 void _divCmd(stack_t **, unsigned int, stack_t *);
+void _subCmd(stack_t **, unsigned int, stack_t *);
 #endif /* main.h */
