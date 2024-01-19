@@ -20,6 +20,6 @@ void _fileReader(char *data, size_t size, unsigned int lnCount, stack_t **stk)
 	lnCount++;
 		if (readdt > 0)
 			execCmds(data, stk, lnCount, Cnt.file);
-	}
 	free(data);
+	}
 }
