@@ -2,11 +2,12 @@
 /**
  * _exceptionHandler - handles pop exceptions during exec
  * @stack: pointer to the stack
- * @lnCount: line number wher exception occured
+ * @lnCount: line number where exception occured
+ * @Msg: error message to be displayed
  */
-void _exceptionHandler(stack_t **stack, unsigned int lnCount)
+void _exceptionHandler(stack_t **stack, unsigned int lnCount, const char *Msg)
 {
-	fprintf(stderr, "L%d: can't pop an empty stack\n", lnCount);
+	fprintf(stderr, Msg, lnCount);
 	fclose(Cnt.file);
 	free(Cnt.data);
 	freeStack(*stack);
