@@ -8,7 +8,7 @@
 void _popCmd(stack_t **stack, stack_t *thisStk, unsigned int lnCount)
 {
 	if (*stack == NULL)
-		_exceptionHandler(stack, lnCount);
+		_exceptionHandler(stack, lnCount, "L%d: can't pop an empty stack\n");
 
 	thisStk = *stack;
 	*stack = thisStk->next;
