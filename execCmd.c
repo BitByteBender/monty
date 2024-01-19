@@ -38,6 +38,8 @@ void execCmds(char *data, stack_t **stack, unsigned int lnCount, FILE *file)
 		_subCmd(stack, lnCount, NULL);
 	else if (strcmp(opcode, "div") == 0)
 		_divCmd(stack, lnCount, NULL);
+	else if (strcmp(opcode, "mul") == 0)
+		_mulCmd(stack, lnCount, NULL);
 	else if (strcmp(opcode, "nop") == 0)
 		_nopCmd(stack, lnCount);
 }
