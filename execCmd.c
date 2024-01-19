@@ -32,6 +32,8 @@ void execCmds(char *data, stack_t **stack, unsigned int lnCount, FILE *file)
 		_popCmd(stack, NULL, lnCount);
 	else if (strcmp(opcode, "swap") == 0)
 		_swapCmd(stack, lnCount, NULL);
+	else if (strcmp(opcode, "add") == 0)
+		_addCmd(stack, lnCount, NULL);
 	else if (strcmp(opcode, "nop") == 0)
 		_nopCmd(stack, lnCount);
 }
