@@ -1,15 +1,30 @@
 #include "monty.h"
 /**
- * _pushToSorQ - pushes to stack or queue
+ * _pushToSorQ - pushes a value to stack or queue
  * @stack: pointer to stack struct
- * @lnCount: line_number (unused)
+ * @lnCount: line_number
+ * @n: int value to be pushed
  */
-void _pushToSorQ(stack_t **stack, unsigned int lnCount)
+void _pushToSorQ(stack_t **stack, unsigned int lnCount, int n)
 {
-	int n = 0;
-	(void) lnCount;
+	int i = 0, cnt = 0;
+	char chr = '-';
 
-	checkPushArgs(Cnt.extractedArgs, lnCount, stack);
+	if (Cnt.extractedArgs)
+	{
+		if (Cnt.extractedArgs[0] == chr)
+			i++;
+
+		for (; Cnt.extractedArgs[i] != '\0'; i++)
+		{
+		if (Cnt.extractedArgs[i] > '9' || Cnt.extractedArgs[i] < '0')
+			cnt = 1;
+		}
+		if (cnt == 1)
+			errHandler("usage: push integer", lnCount, stack);
+	}
+	else
+		errHandler("usage: push integer", lnCount, stack);
 
 	n = atoi(Cnt.extractedArgs);
 
@@ -17,10 +32,4 @@ void _pushToSorQ(stack_t **stack, unsigned int lnCount)
 		insertNode(stack, n);
 	else
 		insertQueue(stack, n, "Error: malloc failed\n");
-
-	if (Cnt.extractedArgs)
-	{
-	free(Cnt.extractedArgs);
-	Cnt.extractedArgs = NULL;
-	}
 }

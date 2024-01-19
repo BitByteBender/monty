@@ -1,47 +1,33 @@
 #include "monty.h"
 /**
- * execCmd - executes command based on given data
- * @data: string that holds a cmd and args
- * @stack: pointer to the stack top
- * @lnCount: line_number in the file
+ * execCmds - executes command based on given data
+ * @data: cmd data to get exec
+ * @stack: pointer to the stack
+ * @lnCount: line_number of the cmd in the file
  * @file: pointer to the processed file
- * Return: exe status
  */
-int execCmd(char *data, stack_t **stack, FILE *file, unsigned int lnCount)
+void execCmds(char *data, stack_t **stack, unsigned int lnCount, FILE *file)
 {
-	instruction_t operations[] = {
-		{"push", _pushToSorQ},
-		{"pall", printAll},
-		{NULL, NULL}
-	};
+	int valHolder = 0;
+	char charHolder = '#', *opcode = strtok(data, DELIMITER);
+	(void)file;
 
-	char *opcode = strtok(data, DELIMITER);
-	char *extractedArgs = strtok(NULL, DELIMITER);
-	int exec;
+	if (!opcode || opcode[0] == charHolder)
+		return;
 
-	if (extractedArgs)
+	Cnt.extractedArgs = strtok(NULL, DELIMITER);
+
+	if (strcmp(opcode, "push") == 0)
 	{
-	Cnt.extractedArgs = _strDuplicate(extractedArgs);
-		if (Cnt.extractedArgs == NULL)
-		{
-		fprintf(stderr, "Error: strdup failed\n");
-		clean(stack, file);
-		exit(EXIT_FAILURE);
-		}
+		if (!Cnt.extractedArgs)
+			errHandler("usage: push integer", lnCount, stack);
+		valHolder = atoi(Cnt.extractedArgs);
+		insertNode(stack, valHolder);
 	}
-	else
-		Cnt.extractedArgs = NULL;
-
-	exec = Exe(opcode, stack, lnCount, file, operations);
-
-	if (exec == 1)
-		handleUnk(lnCount, opcode, file, data, stack);
-
-	if (Cnt.extractedArgs)
-	{
-	free(Cnt.extractedArgs);
-	Cnt.extractedArgs = NULL;
-	}
-
-	return (exec);
+	else if (strcmp(opcode, "pall") == 0)
+		_printAll(stack, lnCount);
+	else if (strcmp(opcode, "pint") == 0)
+		_pintCmd(stack, lnCount);
+	else if (strcmp(opcode, "pop") == 0)
+		_popCmd(stack, NULL, lnCount);
 }

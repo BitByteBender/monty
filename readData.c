@@ -1,40 +1,25 @@
 #include "monty.h"
 /**
- * readCmd - reads a line from file
- * @bfr: pointer to the buffer storing line
- * @lC: pointer
- * @fl: file to read from
- * @sz: pointer to size of buffer
- * @dt: data pointer
- * Return: size of read data
+ * _fileReader - reads a line from file
+ * @data: bfr to store line read
+ * @size: buffer size
+ * @lnCount: processed line_number
+ * @stk: pointer to stack top
  */
-ssize_t readCmd(char **bfr, size_t *sz, unsigned int *lC, FILE *fl, char **dt)
+void _fileReader(char *data, size_t size, unsigned int lnCount, stack_t **stk)
 {
 	ssize_t readdt;
-	*bfr = NULL;
 
-	readdt = getline(bfr, sz, fl);
+	readdt = 1;
 
-	if (readdt > 0)
+	while (readdt > 0)
 	{
-	(*lC)++;
-	return (readdt);
+	data = NULL;
+	readdt = getline(&data, &size, Cnt.file);
+	Cnt.data = data;
+	lnCount++;
+		if (readdt > 0)
+			execCmds(data, stk, lnCount, Cnt.file);
 	}
-	else if (readdt == -1)
-	{
-		if (*bfr)
-		{
-		free(*bfr);
-		*bfr = NULL;
-		}
-
-		if (*dt)
-		{
-		free(*dt);
-		*dt = NULL;
-		}
-	onExit(NULL, EXIT_FAILURE);
-	}
-
-	return (0);
+	free(data);
 }

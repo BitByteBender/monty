@@ -58,17 +58,24 @@ typedef struct
 } dtContainer;
 extern dtContainer Cnt;
 
-void errHandler(const char *, short, stack_t **);
-void execCmds(char *, stack_t **, unsigned int, FILE *);
-void freeStack(stack_t *);
-void insertQueue(stack_t **, int, const char *);
-void _pintCmd(stack_t **, unsigned int);
-void _printAll(stack_t **, unsigned int);
-void _fileReader(char *, size_t, unsigned int, stack_t **);
-void _exceptionHandler(stack_t **, unsigned int);
-void _fileOpener(char *);
+
+ssize_t readCmd(char **, size_t *, unsigned int *, FILE *, char **);
+void execOp(char *, stack_t **, short, FILE *, instruction_t *);
+int execCmd(char *, stack_t **, FILE *, unsigned int);
+void procFile(FILE *, char *, unsigned int);
+void errHandler(const char *, short, stack_t **, FILE *);
+void clean(stack_t **, FILE *);
+void onExit(stack_t **, int);
+void freeStack(stack_t **);
 void insertNode(stack_t **, int);
-void _fileCloser(stack_t *, int);
-void _popCmd(stack_t **, stack_t *, unsigned int);
-void _pushToSorQ(stack_t **, unsigned int, int);
+void insertQueue(stack_t **, int, const char *);
+void checkPushArgs(const char *, unsigned int, stack_t **);
+void _pushToSorQ(stack_t **, unsigned int);
+void printAll(stack_t **, unsigned int);
+void fileOpener(FILE **, char *);
+void trigger(int, char **, dtContainer *);
+void onExit(stack_t **, int);
+char *_strDuplicate(char *);
+void handleUnk(int, char *, FILE *, char *, stack_t **);
+int Exe(char *, stack_t **, unsigned int, FILE *, instruction_t *);
 #endif /* main.h */

@@ -45,5 +45,7 @@ void insertQueue(stack_t **stack, int n, const char *errMsg)
 	Cnt.extractedArgs = NULL;
 	}
 	write(STDERR_FILENO, errMsg, strlen(errMsg));
+	clean(stack, Cnt.file);
+	exit(EXIT_FAILURE);
 	}
 }

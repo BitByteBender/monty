@@ -1,28 +1,12 @@
 #include "monty.h"
 /**
- * onExit - clean and exit
+ * _fileCloser - exit file(close)
  * @stack: pointer to stack
- * @log: exit log value
+ * @log: exit log value(not used)
  */
-void onExit(stack_t **stack, int log)
+void _fileCloser(stack_t *stack, int log)
 {
-	if (stack != NULL)
-	{
+	(void)log;
 	freeStack(stack);
-	*stack = NULL;
-	}
-
-	if (Cnt.extractedArgs)
-	{
-		free(Cnt.extractedArgs);
-	}
-
-	if (Cnt.data)
-	{
-	free(Cnt.data);
-	Cnt.data = NULL;
-	}
-
-	clean(stack, Cnt.file);
-	exit(log);
+	fclose(Cnt.file);
 }

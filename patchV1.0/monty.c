@@ -9,14 +9,6 @@ dtContainer Cnt = {NULL, NULL, NULL, false};
  */
 int main(int argc, char **argv)
 {
-	stack_t *stack = NULL;
-
-	if (argc != 2)
-		errHandler("USAGE: monty file", -1, &stack);
-
-	_fileOpener(argv[1]);
-	_fileReader(NULL, 0, 0, &stack);
-	_fileCloser(stack, 0);
-
+	trigger(argc, argv, &Cnt);
 	return (0);
 }

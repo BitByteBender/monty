@@ -1,16 +1,12 @@
 #include "monty.h"
 /**
- * fileOpener - opens a file
- * @file: pointer to the file struct to store opened file
- * @fname: name of the file to be opened
+ * _fileOpener - opens a file
+ * @fname: name of file
  */
-void fileOpener(FILE **file, char *fname)
+void _fileOpener(char *fname)
 {
-	*file = fopen(fname, "r");
+	Cnt.file = fopen(fname, "r");
 
-	if (!*file)
-	{
-	fprintf(stderr, "Error: Can't open file %s\n", fname);
-	exit(EXIT_FAILURE);
-	}
+	if (!Cnt.file)
+		errHandler("Error: Can't open file", -1, NULL);
 }
