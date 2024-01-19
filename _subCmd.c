@@ -1,6 +1,6 @@
 #include "monty.h"
 /**
- * _subCmd - add top two elements of the stack
+ * _subCmd - subtract top two elements of the stack
  * @stack: pointer to stack head
  * @lnCount: line number in monty file
  * @topStk: pointer
